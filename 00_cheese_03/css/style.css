@@ -1,0 +1,403 @@
+/* ここから下に記載していく */
+@charset "utf-8";
+html{
+	font-size: 62.5%; /* 16px x 62.5% = 10px */
+}
+
+body{
+	color: #333333;
+	font-family: "Open Sans","メイリオ";
+	font-size:  1.6rem;
+}
+
+/* -------------------------
+        common
+   ------------------------- */
+img{
+	max-width: 100%;
+	height: auto;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.wrapper{
+	max-width: 1154px;
+	margin: auto;
+}
+
+.title{
+	margin: 0 0 30px;
+	font-size: 2.4rem;
+	font-weight: bold;
+}
+.text-yellow{
+	color: #ffd61a;
+}
+
+
+/* -------------------------
+        header
+   ------------------------- */
+.nav-list{
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0 50px;
+}
+.nav-item{
+	margin: 0 0 0 48px;
+	font-size: 2.1rem;
+}
+.nav-btn{
+	text-decoration: none;
+}
+
+.header-wrapper{
+	display: flex;
+	justify-content: space-between;
+}
+/* -------------------------
+        main image
+   ------------------------- */
+
+.main-image{
+	position: relative;
+	margin: 0 0 60px;
+}
+.main-image__text{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform:translate3d(-50%,-50%,0);
+}
+.main-image__text_first{
+	color: #fff;
+	font-size: 3.4rem;
+	font-weight: bold;
+	margin: 0 0 30px;
+}
+.main-image__text_second{
+	color: #fff;
+	font-size: 2.2rem;
+}
+
+/* -------------------------
+        about
+   ------------------------- */
+.about-wrapper{
+	margin: 0 0 60px;
+}
+
+.about__name{
+	margin: 0 0 60px;
+	font-size: 1.8rem;
+}
+
+.about__text{
+	margin: 0 0 40px;
+}
+.about__sentence{
+	line-height: 2;
+	text-align: center;
+	margin: 0 0 40px;
+}
+.about__photos{
+	display: flex;
+	justify-content: space-between;
+}
+.about-photo{
+	width: 25%;
+}
+
+/* -------------------------
+        course
+   ------------------------- */
+.course-wrapper{
+	margin: 0 0 60px;
+}
+
+.course__text{
+	margin: 0 0 60px;
+}
+
+.course__contents{
+	display: flex;
+	justify-content: center;
+	background-color: #fafafa;
+}
+.course__box{
+	width: 50%;
+	margin: auto;
+}
+.course__paragraph{
+	width: 430px;
+}
+.left_margin{
+	margin: 0 auto 0 50px;
+}
+.right_margin{
+	margin: 0 50px 0 auto;
+}
+.course__title{
+	font-size: 2.4rem;
+	font-weight: bold;
+	margin: 0 0 40px;
+}
+.course__sentences{
+	line-height: 2;
+}
+
+
+/* -------------------------
+	news
+------------------------- */
+.news-wrapper{
+	margin: 0 0 60px;
+}
+.news-contents-wrapper{
+	max-width: 960px;
+	margin: auto;
+}
+.news__list{
+	display: flex;
+	margin: 0 auto 60px;
+	justify-content: space-between;
+}
+.news__item{
+	width: 300px;
+}
+.news__item:hover{
+	border: solid 1px red;
+}
+
+.news__name{
+	margin: 0 0 60px;
+	font-size: 1.8rem;
+}
+.news__eyecatch{
+	margin: 0 0 30px;
+}
+.news__heading{
+	margin: 0 0 24px;
+}
+
+.btn{
+	display: block;
+	width: 300px;
+	margin: auto;
+	padding: 21px 0;
+	background-color: #ffd61a;
+	color: #fff;
+	font-size: 1.8rem;
+	text-decoration: none;
+}
+.btn:hover{
+	color: #222222;
+}
+
+/* -------------------------
+        access
+   ------------------------- */
+.access-wrapper{
+	margin: 60px auto;
+	padding: 60px 0;
+	background-color: #fafafa;
+}
+
+.access__name{
+	margin: 0 0 60px;
+}
+.map{
+	margin: 0 0 60px;
+}
+.access-inner{
+	width: 50%;
+	display: flex;
+	flex-wrap: wrap;
+	margin: auto;
+}
+.access-title{
+	width: 30%;
+	margin: 0 0 30px 30px;
+}
+.access-item{
+	width: 60%;
+}
+
+/* -------------------------
+        contact
+   ------------------------- */
+.contact-wrapper{
+	margin: 0 0 70px;
+}
+.contact__title{
+	margin: 0 0 60px;
+}
+.contact__name{
+	line-height: 2;
+	text-align: center;
+	margin: 0 0 70px;
+}
+
+.form-wrapper{
+	width: 680px;
+	margin: 0 auto 140px;
+}
+.form-inner{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 0 30px;
+	border-bottom: solid 1px #bfbfbf;
+}
+.form-title{
+	width: 240px;
+	padding: 16px 16px 0 0;
+	border-top: solid 1px #bfbfbf;
+	border-right: solid 1px #bfbfbf;
+}
+.form-item{
+	width: 400px;
+	padding: 8px 0 8px 8px;
+	border-top: solid 1px #bfbfbf;
+}
+.form-parts{
+	box-sizing: border-box;
+	width: 312px;
+	padding: 8px;
+	border:solid 1px #bfbfbf;
+	font-size: 1.6rem;
+}
+input[type*="checkbox"]{
+	margin: 0 10px 0 0;
+	width: 16px;
+	height: 16px;
+	border: solid 0.5px #bfbfbf;
+	background-color: #fafafa;
+	vertical-align: -2px;
+}
+.form-label{
+	display: block;
+	margin:  12px 10px 0 0;
+	font-size: 1.4rem;
+}
+.btn-submit{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: none;
+}
+
+/* -------------------------
+        footer
+   ------------------------- */
+
+.footer{
+	padding: 30px 0;
+	background-color: #707070;
+}
+.footer .wrapper{
+	position: relative;
+}
+.copyrights{
+	color: #fff;
+}
+.btn-pagetop{
+	position: absolute;
+	top: -78px;
+	right: 0px;
+	display: block;
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	background-color: #707070;
+}
+.icon-up{
+	display: block;
+	color: #fff;
+	font-size: 2.4rem;
+	padding: 10px 0;
+}
+
+@media screen and (max-width:640px){
+	/* -----------------------------------
+     *  common
+	   -----------------------------------*/
+	.wrapper{
+		width: 100%;
+	}
+
+	/* -----------------------------------
+     *  about
+	   -----------------------------------*/
+	.about-wrapper{
+		box-sizing: border-box;
+		width: 100%;
+		padding: 0 10px;
+	}
+	
+	.about__name{
+		margin: 0 0 60px;
+		font-size: 1.8rem;
+	}
+	
+	.about__text{
+		margin: 0 0 40px;
+	}
+	.about__sentence{
+		text-align: left;
+		margin: 0;
+	}
+	.about__photos{
+		display: flex;
+		justify-content: space-between;
+	}
+	.about-photo{
+		width: 25%;
+	}
+
+	/* -------------------------
+		news
+	------------------------- */
+	.news-wrapper{
+		box-sizing: border-box;
+		width: 100%;
+		padding: 0 10px;
+	}
+	.news-contents-wrapper{
+		max-width: 960px;
+		margin: auto;
+	}
+	.news__list{
+		display: flex;
+		margin: 0 auto 60px;
+		justify-content: space-between;
+	}
+	.news__item{
+		width: 300px;
+	}
+
+	.news__name{
+		margin: 0 0 60px;
+		font-size: 1.8rem;
+	}
+	.news__eyecatch{
+		margin: 0 0 30px;
+	}
+	.news__heading{
+		margin: 0 0 24px;
+	}
+
+	.btn{
+		display: block;
+		width: 300px;
+		margin: auto;
+		padding: 21px 0;
+		background-color: #ffd61a;
+		color: #fff;
+		font-size: 1.8rem;
+		text-decoration: none;
+	}
+
+
+}
