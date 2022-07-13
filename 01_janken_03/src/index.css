@@ -1,0 +1,240 @@
+@charset "utf-8";
+html{
+	font-size: 62.5%; /* 16px x 62.5% = 10px */
+}
+
+body{
+	color: #333333;
+	font-family: "Open Sans","メイリオ";
+	font-size:  1.6rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* -------------------------
+        common
+   ------------------------- */
+ .wrapper{
+	max-width: 1154px;
+	margin: auto;
+}
+
+.btn{
+	display: block;
+	width: 300px;
+	margin: auto;
+	padding: 21px 0;
+	background-color: #175ac0;
+	border-color: #175ac0;
+	color: #fff;
+	font-size: 1.8rem;
+	text-decoration: none;
+}
+
+/* -------------------------
+        main image
+   ------------------------- */
+
+  .main-image{
+    margin: 0 0 60px;
+    max-width: 100%;
+    height: auto;     
+    background-image: url("images/mainbg.jfif");
+  }
+  .main-image__text_first{
+    color: #fff;
+    font-size: 3.4rem;
+    font-weight: bold;
+    margin: 30px 0 0;
+    padding: 60px 0 10px;
+  }
+  .main-image__text_second{
+    color: #fff;
+    font-size: 2.2rem;
+    margin: 0;
+    padding: 0 0 30px;
+  }
+
+/* -------------------------
+        about
+   ------------------------- */
+.about-wrapper{
+  margin: 0 0 60px;
+}
+
+.about__name{
+  margin: 0 0 60px;
+  font-size: 1.8rem;
+}
+
+.about__text{
+  margin: 0 0 40px;
+}
+.about__sentence{
+  line-height: 2;
+  text-align: center;
+  margin: 0 0 40px;
+}
+.about__photos{
+  display: flex;
+  justify-content: space-between;
+}
+.about-photo{
+  width: 25%;
+}
+  
+/* -------------------------
+        initial
+   ------------------------- */
+.initial-wrapper{
+  margin: 0 0 60px;
+}
+  
+.initial__text{
+  font-size: 2.6rem;
+  margin: 0 0 10px;
+}
+
+.initail__counts{
+  font-size: 2.6rem;
+  margin: 0 0 10px;
+}
+/* -------------------------
+        field
+   ------------------------- */
+.field-wrapper{
+  margin: 0 0 60px;
+}
+  
+.field__contents{
+  display: flex;
+  justify-content: center;
+}
+.field__box{
+  width: 50%;
+  margin: auto;
+}
+
+.field__paragraph{
+	width: 300px;
+  margin: auto;
+}
+
+.field__title{
+	font-size: 2.4rem;
+	font-weight: bold;
+	margin: 0 0 10px;
+}
+.field__sentences{
+	line-height: 2;
+}
+
+.btn-hand{
+	display: inline-block;
+	width: 100px;
+  padding: 5px 0;
+  margin: 0 10px;
+	background-color: #175ac0;
+	border-color: #175ac0;
+	color: #fff;
+	font-size: 1.8rem;
+	text-decoration: none;
+}
+
+/* -------------------------
+        result
+   ------------------------- */
+
+.result-wrapper{
+	width: 300px;
+	margin: auto;
+}
+
+.result__counts{
+  margin: 0 0 100px;  
+}
+
+.result-inner{
+	display: flex;
+	flex-wrap: wrap;
+  font-size: 1.8rem;
+}
+
+.result-top{
+  border-top: solid 1px #bfbfbf;
+}
+
+.result-title{
+	width: 149px;
+  border-right: solid 1px #bfbfbf;
+  border-bottom: solid 1px #bfbfbf;
+}
+
+.result-item{
+	width: 150px;
+  margin: 0;
+  border-bottom: solid 1px #bfbfbf;
+}
+
+.result-winner{
+  font-size: 2.6rem;
+  margin: 0 0 60px;
+}
+/* -------------------------
+        footer
+   ------------------------- */
+
+.footer{
+  padding: 10px 0;
+  background-color: #707070;
+}
+.footer .wrapper{
+  position: relative;
+}
+.copyrights{
+  color: #fff;
+}
+
+
+/* -------------------------
+        animation
+   ------------------------- */
+   
+.falling-score {
+  color: #175ac0;/*雪の色*/
+  font-size: 30px;/*雪の大きさ*/
+  position: fixed;
+  /*雪の位置を指定-ランダムな数値を入れて雪をあちこちに降らせる*/
+  text-shadow:
+    -50vw -800px 0px,
+    -15vw -700px 0px,
+    -10vw -200px 0px,
+    -40vw -100px 0px,
+    -30vw -250px 0px,
+    -20vw -620px 0px,
+    -3vw -100px 0px,
+    20vw -500px 0px,
+    25vw -500px 0px,
+    30vw -300px 0px,
+    36vw -400px 0px,
+    40vw -150px 0px,
+    47vw -840px 0px,
+    50vw -300px 0px,
+    60vw -200px 0px;
+  /*アニメーションの指定*/
+  animation: falling-score 6s linear infinite;
+}
+
+@keyframes falling-score {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}
