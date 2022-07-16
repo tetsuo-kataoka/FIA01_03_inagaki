@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import Button from '@mui/material/Button';
+import { Chip } from '@mui/material';
 import './App.css';
 
 //To do listのタスクの状態
@@ -66,7 +68,7 @@ const getItemStyle = draggableStyle => ({
   paddingBottom: '0.1rem',
   marginBottom: '0.5rem',
   background: '#fff8e8',
-  borderLeft: 'solid 0.5rem #ffc06e',
+  borderLeft: 'solid 0.5rem rgb(72, 86, 237)',
   color: '#282c34',
 
   ...draggableStyle
@@ -96,6 +98,17 @@ function List(props) {
     list8: 'Done!',
     list9: 'Next Week',
   };
+
+  const completeClick = () => {
+    // list8のタスクを全て削除
+//    const completed_todos = todo.filter(function(elem) {
+//      return (elem.list !== 'list8');
+//    });
+
+    // list8の中身をクリア
+//    setList8([]);
+//    setTodo([...completed_todos]);
+  }
 
   return (
     <div className="To-do-list">
@@ -129,7 +142,18 @@ function List(props) {
               </Draggable>
             ))}
             {provided.placeholder}
-            <button className="Add-item-btn" onClick={() => props.onAddItems(props.id)}></button>
+            <div class="sub_title">
+              <button className="Add-item-btn" onClick={() => props.onAddItems(props.id)}></button>
+              {props.id === 'list8' && (
+                <div class="complete">
+                  <Chip
+                    label="Complete!"
+                    color="primary"
+                    onClick={completeClick}
+                  />
+                </div>
+              )}
+            </div>
           </div>
         )}
       </Droppable>
@@ -387,7 +411,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1 class="title">Weekly TO-DO list</h1>
+        <h1 class="title">Weekly Manager</h1>
       </header>
       <ToDoListContainer />
     </div>

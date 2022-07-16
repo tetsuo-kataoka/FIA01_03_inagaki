@@ -1,6 +1,8 @@
 .App {
-  background-color: rgb(219, 221, 245);
-  height: 100vh;
+  background-color: rgb(142, 174, 249);
+  margin: auto;
+  width: 880px;
+  /* height: 100vh; */
   text-align: center;
 }
 
@@ -23,6 +25,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #282c34;
+  background-color: rgb(34, 5, 177);
 }
 
 @keyframes App-logo-spin {
@@ -41,11 +44,6 @@
 
 .To-do-list {
   flex: 1;
-}
-
-.week{
-  font-size: 1rem;
-  font-weight: bold;
 }
 
 .Add-item-btn {
@@ -70,7 +68,7 @@
 
 .Add-item-btn:hover {
   background: #fff8e8;
-  border-left: solid 10px #ffc06e;
+  border-left: solid 10px rgb(72, 86, 237);
 }
 
 .Item-form {
@@ -111,4 +109,20 @@
 .title{
   font-weight: bold;
   font-size: 2rem;
+  color: #fff;
+}
+
+.sub_title{
+  display: flex;
+  justify-content: space-between;
+}
+
+.week{
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.complete{
+  font-size: 1rem;
+  font-weight: bold;
 }
