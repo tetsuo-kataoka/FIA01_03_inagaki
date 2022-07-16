@@ -1,5 +1,5 @@
 .App {
-  background-color: rgb(142, 174, 249);
+  background-color: #F6F6F6;
   margin: auto;
   width: 880px;
   /* height: 100vh; */
@@ -18,14 +18,10 @@
 }
 
 .App-header {
-  min-height: 10vh;
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 5px 0;
   color: #282c34;
-  background-color: rgb(34, 5, 177);
+  background-color: #3AB4F2;
 }
 
 @keyframes App-logo-spin {
@@ -113,6 +109,11 @@
 }
 
 .sub_title{
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.complete_box{
   display: flex;
   justify-content: space-between;
 }
@@ -120,6 +121,7 @@
 .week{
   font-size: 1rem;
   font-weight: bold;
+  color: #0078AA;
 }
 
 .complete{

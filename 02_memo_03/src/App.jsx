@@ -68,7 +68,7 @@ const getItemStyle = draggableStyle => ({
   paddingBottom: '0.1rem',
   marginBottom: '0.5rem',
   background: '#fff8e8',
-  borderLeft: 'solid 0.5rem rgb(72, 86, 237)',
+  borderLeft: 'solid 0.5rem #F2DF3A',
   color: '#282c34',
 
   ...draggableStyle
@@ -106,6 +106,7 @@ function List(props) {
 //    });
 
     // list8の中身をクリア
+//    setTaskNumber(taskNumber + 40);
 //    setList8([]);
 //    setTodo([...completed_todos]);
   }
@@ -142,7 +143,7 @@ function List(props) {
               </Draggable>
             ))}
             {provided.placeholder}
-            <div class="sub_title">
+            <div class="complete_box">
               <button className="Add-item-btn" onClick={() => props.onAddItems(props.id)}></button>
               {props.id === 'list8' && (
                 <div class="complete">
@@ -407,11 +408,14 @@ function ToDoListContainer() {
 }
 
 function App() {
-
+  const [taskNumber, setTaskNumber] = useState(1245);
   return (
     <div className="App">
       <header className="App-header">
         <h1 class="title">Weekly Manager</h1>
+        <h3 class="sub_title">
+          You have already completed {taskNumber.toLocaleString()} tasks!
+        </h3>
       </header>
       <ToDoListContainer />
     </div>
