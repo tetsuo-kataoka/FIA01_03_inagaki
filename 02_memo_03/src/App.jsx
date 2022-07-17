@@ -101,14 +101,15 @@ function List(props) {
 
   const completeClick = () => {
     // list8のタスクを全て削除
-//    const completed_todos = todo.filter(function(elem) {
-//      return (elem.list !== 'list8');
-//    });
+    const completed_todos = props.todo.filter(function(elem) {
+      return (elem.list !== 'list8');
+    });
+    console.log(completed_todos, "completed_todos");
 
     // list8の中身をクリア
-//    setTaskNumber(taskNumber + 40);
-//    setList8([]);
-//    setTodo([...completed_todos]);
+    props.setTaskNumber(Number(props.taskNumber) + Number(props.list.length));
+    props.setList8([]);
+    props.setTodo([...completed_todos]);
   }
 
   return (
@@ -162,7 +163,7 @@ function List(props) {
   );
 }
 
-function ToDoListContainer() {
+function ToDoListContainer({taskNumber, setTaskNumber}) {
   // データの読み込み
   const getTodo = (id) => {
     const todo_data = localStorage.getItem("todo");
@@ -217,7 +218,8 @@ function ToDoListContainer() {
   // useStateの[todo]に変更があったらlocalStrageを更新する
   useEffect(() => {
     localStorage.setItem("todo", JSON.stringify(todo));
-  }, [todo]);
+    localStorage.setItem("count", taskNumber);
+  }, [todo, taskNumber]);
   
   const getList = id => {
     if (listName[id] === 'todo1') {
@@ -395,7 +397,12 @@ function ToDoListContainer() {
             <List 
               key={key} 
               id={key} 
+              todo={todo}
+              setTodo={setTodo}
+              setList8={setList8}
               list={getList(key)} 
+              taskNumber={taskNumber}
+              setTaskNumber={setTaskNumber}
               onAddItems={addItems} 
               onUpdateItems={updateItems}
               onDeleteItemForList={deleteItemForList}
@@ -408,7 +415,13 @@ function ToDoListContainer() {
 }
 
 function App() {
-  const [taskNumber, setTaskNumber] = useState(1245);
+  let count = 0;
+  const strage_count = localStorage.getItem("count");
+  if (strage_count != null){
+    count = strage_count;
+  }
+  const [taskNumber, setTaskNumber] = useState(count);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -417,7 +430,10 @@ function App() {
           You have already completed {taskNumber.toLocaleString()} tasks!
         </h3>
       </header>
-      <ToDoListContainer />
+      <ToDoListContainer
+        taskNumber = {taskNumber}
+        setTaskNumber = {setTaskNumber}
+      />
     </div>
   );
 }
