@@ -1,0 +1,134 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* -------------------------
+        common
+   ------------------------- */
+.wrapper{
+  max-width: 375px;
+  margin: auto;
+}
+
+.contents-wrapper{
+  margin: 0 0 60px 0;
+}
+
+/* -------------------------
+      main image
+  ------------------------- */
+
+.main-image{
+  margin: 0 0 60px;
+  max-width: 100%;
+  height: auto;     
+  background-image: url("/images/mainbg.jfif");
+}
+.main-image__text{
+  width: 375px;
+}
+.main-image__text_first{
+  color: #fff;
+  font-size: 2.3rem;
+  font-weight: bold;
+  margin: 30px 0 0;
+  padding: 60px 0 10px;
+}
+.main-image__text_second{
+  color: #fff;
+  font-size: 1.6rem;
+  margin: 0;
+  padding: 0 0 30px;
+}
+
+/* -------------------------
+    theme
+------------------------- */
+.theme-wrapper{
+  margin: 0 0 60px;
+}
+
+.theme__title{
+  margin: 0 0 20px;
+}
+
+/* -------------------------
+    question
+------------------------- */
+.question-wrapper{
+  margin: 0 0 60px;
+}
+
+.question__title{
+  margin: 0 0 20px;
+}
+
+.question_table{
+  display: table;
+}
+
+.question_row_group{
+  display: table-row-group;
+}
+
+.question_row{
+  display: table-row;
+}
+
+.question_cell{
+  display: table-cell;
+}
+
+/* -------------------------
+        footer
+   ------------------------- */
+
+.footer{
+  padding: 10px 0;
+  background-color: #707070;
+}
+.footer .wrapper{
+  position: relative;
+}
+.copyrights{
+  color: #fff;
+}
