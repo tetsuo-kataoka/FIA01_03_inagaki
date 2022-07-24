@@ -14,9 +14,9 @@ function App() {
           <section id="mainbg">
             <div class="main-image">
               <div class="main-image__text">
-                <p class="main-image__text_first">Develop your perspective</p>
+                <p class="main-image__text_first">指針を見つけよう！</p>
                 <p class="main-image__text_second">
-                  指針を見つけよう！
+                  　
                 </p>
               </div>
             </div>
