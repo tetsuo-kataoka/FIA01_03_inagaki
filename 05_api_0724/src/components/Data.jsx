@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 const Data = () => {
   const [program, setProgram] = useState({});
   const [data, setData] = useState([]);
-  const ApiKey="Vlg46mON9ydfsVkAtJyfmJsHapIwIC8z";
+  const ApiKey="★別途指定★";
 
   useEffect(() => {
     const fetchData = async () => {
