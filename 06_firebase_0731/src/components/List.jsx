@@ -21,7 +21,7 @@ const getListStyle = isDraggingOver => ({
   padding: '0.3rem',
   margin: '0.5rem',
   background: 'white',
-  minWidth: '400px',
+  // minWidth: '400px',
   // height: '70vh',
   border: isDraggingOver ? 'solid 4px lightgray' : 'solid 4px white',
   borderRadius: '0.5rem',
@@ -46,12 +46,9 @@ const List = props => {
     const completed_todos = props.todo.filter(function(elem) {
       return (elem.list !== 'list8');
     });
-    console.log(completed_todos, "completed_todos");
-
     // list8の中身をクリア
     props.setTaskNumber(Number(props.taskNumber) + Number(props.list.length));
     props.setList8([]);
-    props.setTodo([...completed_todos]);
   }
 
   return (

@@ -5,6 +5,7 @@ import List from './components/List';
 import { collection, query, onSnapshot, where, getDocs, deleteDoc, doc, addDoc, updateDoc } from "firebase/firestore";
 import { db, auth } from "./firebase"; // .env の情報を呼び出し
 import { async } from '@firebase/util';
+import { makeStyles } from "@material-ui/core";
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import Dialog from '@material-ui/core/Dialog'
@@ -70,10 +71,7 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 
 function ToDoListContainer({taskNumber, setTaskNumber}) {
 
-  // TODOの設定
-  // これは本来いらない
-  const [todo, setTodo] = useState([]);
-  // 登録されているデータを保持するuseState
+  // 各リスト向けの格納データ
   const [todo1, setList1] = useState([]);
   const [todo2, setList2] = useState([]);
   const [todo3, setList3] = useState([]);
@@ -115,16 +113,6 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
     return () => unsub();
   }, []);
 
-  const deleteTodo = async (id) => {
-    const q = query(todosCollectionRef, where('list', '==', 'list1'));
-    const querySnapshot = await getDocs(q);
-    console.log(q,'q in deleteTodo');
-    querySnapshot.forEach(async (document) => {
-      const todoDocumentRef = doc(db, 'todos', document.id);
-      await deleteDoc(todoDocumentRef);
-    });
-  }
-
   //////////////////////////////////////////
   // Dialog start
   //////////////////////////////////////////
@@ -133,6 +121,15 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
   const [list, setList] = useState("");
   const [title, setTitle] = useState("");
 
+  const useStyles = makeStyles({
+    topScrollPaper: {
+      alignItems: 'flex-start',
+    },
+    topPaperScrollBody: {
+      verticalAlign: 'top',
+    },
+  })
+  
   const handleClickOpen = (id, item_id, item_content) => {
     setList(id);
     setTodoId(item_id);
@@ -276,44 +273,8 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
     }
   }
 
-  const updateItems = (id, idx, item, e) => {
-    const list_copy = getList(id).slice();
-    list_copy[idx].text = e.target.value;
-    setItemInList(id, list_copy);
-
-    let new_target = true;
-    // データが登録されていたら更新
-    todo.some(function(elem) {
-      if (elem.id === item.id) {
-        elem.title = e.target.value;
-        elem.position = idx;
-        new_target = false;
-      }
-    });
-    // データが新規だったら登録
-    if(new_target){
-      let pushTodo = {
-        list: id,
-        id: item.id,
-        position: idx,
-        title: e.target.value
-      };
-      setTodo([...todo, pushTodo]);
-    } else {
-      setTodo([...todo]);
-    }
-  }
-
-  const deleteItemForList = (id, idx) => {
-    // データを削除
-    let removed_todo = todo.filter(function(elem){
-      return elem.id !== getList(id)[idx].id;
-    });
-    setTodo([...removed_todo]);
-
-    const removed = deleteItem(getList(id),idx);
-    setItemInList(id, removed);
-  }
+  // Dialog 要のスタイル
+  const classes = useStyles()
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -324,7 +285,6 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
               key={key} 
               id={key} 
               list={getList(key)} 
-              onUpdateItems={updateItems}
               handleClickOpen={handleClickOpen}
             />
           )}
@@ -334,19 +294,26 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
             <List
               key={key} 
               id={key} 
-              todo={todo}
-              setTodo={setTodo}
               setList8={setList8}
               list={getList(key)} 
               taskNumber={taskNumber}
               setTaskNumber={setTaskNumber}
-              onUpdateItems={updateItems}
               handleClickOpen={handleClickOpen}
             />
           )}
         </div>
       </div>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" maxWidth="sm" fullWidth={true}>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+        maxWidth="sm"
+        fullWidth={true}
+        classes={{
+          scrollPaper: classes.topScrollPaper,
+          paperScrollBody: classes.topPaperScrollBody
+        }}
+        >
         <DialogTitle id="form-dialog-title">
           タスク編集
         </DialogTitle>

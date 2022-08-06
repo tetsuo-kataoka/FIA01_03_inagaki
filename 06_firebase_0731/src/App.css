@@ -1,8 +1,8 @@
 .App {
   background-color: #F6F6F6;
   margin: auto;
-  width: 880px;
-  /* height: 100vh; */
+  width: auto;
+  height: auto;
   text-align: center;
 }
 
