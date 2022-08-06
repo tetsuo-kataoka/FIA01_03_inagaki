@@ -1,0 +1,129 @@
+.App {
+  background-color: #F6F6F6;
+  margin: auto;
+  width: 880px;
+  /* height: 100vh; */
+  text-align: center;
+}
+
+.App-logo {
+  height: 10vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  align-items: center;
+  padding: 5px 0;
+  color: #282c34;
+  background-color: #3AB4F2;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.To-do-list-container {
+  display: flex;
+	justify-content: center;
+}
+
+.To-do-list {
+  flex: 1;
+}
+
+.Add-item-btn {
+  padding: 0.1rem 0rem 0.1rem 1rem;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  background: white;
+  border-left: solid 10px white;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+}
+
+.Add-item-btn:before {
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1rem;
+  content: "＋";
+  opacity: 0.5;
+}
+
+.Add-item-btn:hover {
+  background: #fff8e8;
+  border-left: solid 10px rgb(72, 86, 237);
+}
+
+.Item-form {
+  padding: 0;
+  margin: 0;
+  resize: none;
+  border: none;
+  font-size: 1em;
+  width: 95%;
+  height: 100%;
+  background: #fff8e8;
+}
+
+.Item-form:focus {
+  outline: 0;
+}
+
+.Modify-item-btn {
+  padding: 0;
+  width: 5%;
+  background: #fff8e8;
+  border: none;
+}
+
+.Modify-item-btn:before {
+  font-weight: bold;
+  font-size: 1rem;
+  line-height: 1rem;
+  content: "M";
+  opacity: 0.05;
+}
+
+.Modify-item-btn:hover:before {
+  opacity: 1;
+}
+
+.title{
+  font-weight: bold;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.sub_title{
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.complete_box{
+  display: flex;
+  justify-content: space-between;
+}
+
+.week{
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0078AA;
+}
+
+.complete{
+  font-size: 1rem;
+  font-weight: bold;
+}
