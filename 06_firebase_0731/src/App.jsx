@@ -102,7 +102,6 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
         if( a.position < b.position) {return -1}
         if( b.position < a.position) {return 1}
       })
-      console.log(target_todos,'target_todos');
       setList1(target_todos.filter(item => (item.list === 'list1')));
       setList2(target_todos.filter(item => (item.list === 'list2')));
       setList3(target_todos.filter(item => (item.list === 'list3')));
@@ -161,37 +160,38 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
         title: title,
       });
     // 既存タスクであれば更新
-  }else{
-    const todoCollectionRef = doc(db, 'todos', todo_id);
-    await updateDoc(todoCollectionRef, {
-      list: list,
-      position: 3,
-      title: title,
-    });
-  }
+    }else{
+      const todoCollectionRef = doc(db, 'todos', todo_id);
+      await updateDoc(todoCollectionRef, {
+        list: list,
+        position: 3,
+        title: title,
+      });
+    }
 
+    // 一時的なデータなので削除しておく
+    setList("");
+    setTodoId("");
     setTitle("");
     setOpen(false);
   }
 
   // 送信を押したら削除
-  const handleDeleteSubmit = (e) => {
-    setTodo(
-      todo.filter((n, index) => index !== e['index'])
-    );
+  const handleDeleteSubmit = async (e) => {
+    // フォームタグは送信の際に画面がリロードされるので、それをさせないおまじないが以下
+    e.preventDefault();
+    const todoDcoumentRef = doc(db, 'todos', todo_id);
+    await deleteDoc(todoDcoumentRef);
+    setList("");
+    setTodoId("");
+    setTitle("");
+    setOpen(false);
   }
   
   //////////////////////////////////////////
   // Dialog end
   //////////////////////////////////////////
 
-  // useStateの[todo1]に変更があったらlocalStrageを更新する
-  useEffect(() => {
-    // deleteTodo('list1');
-    // localStorage.setItem("todo", JSON.stringify(todo));
-    // localStorage.setItem("count", taskNumber);
-  }, [todo1]);
-  
   const getList = id => {
     if (listName[id] === 'todo1') {
       return todo1;
@@ -214,25 +214,38 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
     }
   }
 
-  const setItemInList = (id, list) => {
+  // リストが変更時に呼ばれる
+  const setItemInList = async (id, list) => {
+    console.log(list, 'list in setItemInList')
+    const recreated_todos = await list.map((item, index) => (
+      { list: id,
+        id: item.id,
+        position: index,
+        title: item.title,
+      }))
+    recreated_todos.map(async (item) => {
+      const todoDcoumentRef = doc(db, 'todos', item.id);
+      const res = await updateDoc(todoDcoumentRef,{list: id, position: item.position})
+    });
+  
     if (listName[id] === 'todo1') {
-      setList1(list);
+      setList1(recreated_todos);
     } else if (listName[id] === 'todo2') {
-      setList2(list);
+      setList2(recreated_todos);
     } else if (listName[id] === 'todo3') {
-      setList3(list);
+      setList3(recreated_todos);
     } else if (listName[id] === 'todo4') {
-      setList4(list);
+      setList4(recreated_todos);
     } else if (listName[id] === 'todo5') {
-      setList5(list);
+      setList5(recreated_todos);
     } else if (listName[id] === 'todo6') {
-      setList6(list);
+      setList6(recreated_todos);
     } else if (listName[id] === 'todo7') {
-      setList7(list);
+      setList7(recreated_todos);
     } else if (listName[id] === 'todo8') {
-      setList8(list);
+      setList8(recreated_todos);
     } else if (listName[id] === 'todo9') {
-      setList9(list);
+      setList9(recreated_todos);
     }
   }
 
@@ -247,24 +260,10 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
         source.index,
         destination.index
       );
-      // データを更新
-      // 移動対象となったオブジェクトは削除
-      const reordered_todos = todo.filter(function(elem) {
-        return (elem.list !== source.droppableId);
-      });
-
-      update.map(function(elem,index){
-        reordered_todos.push({
-          list: source.droppableId,
-          id: elem.id,
-          position: index,
-          title: elem.title
-        })
-      })
-      // setTodo([...reordered_todos]);
 
       setItemInList(source.droppableId, update);
     } else {
+      console.log("I'm in else");
       const result = move(
         getList(source.droppableId),
         getList(destination.droppableId),
@@ -272,41 +271,9 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
         destination
       );
       // データを更新
-      // 移動対象となったオブジェクトは削除
-      const result_todos = todo.filter(function(elem) {
-        return (elem.list !== source.droppableId && elem.list !== destination.droppableId);
-      });
-
-      // 順序を指定しなおして作成
-      for (let key in result){
-        result[key].map(function(elem, index){
-          result_todos.push({
-            list: key,
-            id: elem.id,
-            position: index,
-            title: elem.title
-          })
-        })
-      }
-      // setTodo([...result_todos]);
-
       setItemInList(source.droppableId, result[source.droppableId]);
       setItemInList(destination.droppableId, result[destination.droppableId]);
     }
-  }
-
-  const addItems = id => {
-    setItemInList(
-      id,
-      getList(id).concat(
-        {
-          id: `item-${itemCount + 1}`,
-          position: '',
-          title: ''
-        }
-      )
-    );
-    setItemCount(itemCount + 1);
   }
 
   const updateItems = (id, idx, item, e) => {
@@ -357,7 +324,6 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
               key={key} 
               id={key} 
               list={getList(key)} 
-              onAddItems={addItems} 
               onUpdateItems={updateItems}
               handleClickOpen={handleClickOpen}
             />
@@ -374,27 +340,29 @@ function ToDoListContainer({taskNumber, setTaskNumber}) {
               list={getList(key)} 
               taskNumber={taskNumber}
               setTaskNumber={setTaskNumber}
-              onAddItems={addItems} 
               onUpdateItems={updateItems}
               handleClickOpen={handleClickOpen}
             />
           )}
         </div>
       </div>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" maxWidth="lg">
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title" maxWidth="sm" fullWidth={true}>
         <DialogTitle id="form-dialog-title">
           タスク編集
         </DialogTitle>
         <DialogContent>
-          {todo_id}
           <TextField
             id="standard-multiline-static"
-            label="内容"
-            multiline
-            minRows={4}
+            label="タイトル"
+            autoFocus={true}
             onChange={(e) => setTitle(e.target.value)}
             fullWidth
             value={title}
+            onKeyPress={e => {
+              if (e.key === 'Enter') {
+                handleAddSubmit(e);
+              }
+            }}
           />
         </DialogContent>
         <DialogActions>

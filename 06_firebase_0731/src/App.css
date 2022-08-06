@@ -33,13 +33,20 @@
   }
 }
 
-.To-do-list-container {
-  display: flex;
-	justify-content: center;
+/* PC向け */
+@media screen and (min-width: 481px) {
+  .To-do-list-container {
+    display: flex;
+    justify-content: center;
+  }
+  .To-do-list {
+    flex: 1;
+  }
 }
 
-.To-do-list {
-  flex: 1;
+/* スマホ向け */
+@media screen and (max-width: 480px) {
+
 }
 
 .Add-item-btn {
