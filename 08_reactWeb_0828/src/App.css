@@ -1,0 +1,75 @@
+.App {
+  background-color: #f6f6f6;
+  margin: auto;
+  width: auto;
+  height: auto;
+  text-align: center;
+}
+
+.App-logo {
+  height: 10vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* PC向け */
+@media screen and (min-width: 481px) {
+  .To-do-list {
+    max-width: 420px;
+    margin: auto;
+    flex: 1;
+  }
+  .footer {
+    margin-top: 60px;
+  }
+}
+
+/* スマホ向け */
+@media screen and (max-width: 480px) {
+  .To-do-list {
+    width: auto;
+  }
+  .footer {
+    margin-top: 10px;
+  }
+}
+
+.Item-form {
+  padding: 0;
+  margin: 0;
+  resize: none;
+  border: none;
+  font-size: 1em;
+  width: 95%;
+  height: 100%;
+  background: #fff8e8;
+}
+
+.Item-form:focus {
+  outline: 0;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.sub_title {
+  font-size: 1.2rem;
+  color: #fff;
+}
