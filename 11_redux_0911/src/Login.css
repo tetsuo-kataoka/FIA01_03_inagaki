@@ -1,0 +1,107 @@
+/* -------------------------
+        common
+   ------------------------- */
+.login {
+  color: #333333;
+  font-family: "Open Sans", "メイリオ";
+  font-size: 1.6rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: auto;
+}
+
+.title {
+  margin: 0 0 30px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.text-yellow {
+  color: #ffd61a;
+}
+
+/* -------------------------
+        main image
+   ------------------------- */
+
+.main-image {
+  margin: 0 0 60px;
+  max-width: 100%;
+  height: auto;
+  background-image: url("img/mainbg.jfif");
+}
+.main-image__text_first {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 30px 0 0;
+  padding: 60px 0 10px;
+}
+.main-image__text_second {
+  color: #fff;
+  font-size: 2.2rem;
+  margin: 0;
+  padding: 0 0 30px;
+}
+
+/* -------------------------
+        about
+   ------------------------- */
+.about-wrapper {
+  margin: 0 0 60px;
+}
+
+.about__name {
+  margin: 0 0 60px;
+  font-size: 1.6rem;
+}
+
+.about__text {
+  margin: 0 0 40px;
+}
+.about__sentence {
+  line-height: 2;
+  text-align: center;
+  margin: 0 0 40px;
+  font-size: 1rem;
+}
+.about__photos {
+  display: flex;
+  justify-content: space-between;
+}
+.about-photo {
+  width: 25%;
+}
+
+/* -------------------------
+        login
+   ------------------------- */
+.login-wrapper {
+  margin: 0 0 60px;
+}
+
+/* -------------------------
+        footer
+   ------------------------- */
+
+.footer {
+  padding: 10px 0;
+  background-color: #707070;
+  font-size: 0.6rem;
+}
+.footer .wrapper {
+  position: relative;
+}
+.copyrights {
+  color: #fff;
+}
